@@ -9,6 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "i": "^0.3.2"
+    "bluebird": "^2.3.2",
+    "googleapis": "^1.0.11",
+    "image-resolver": "^0.5.3",
+    "joi": "^4.6.2",
+    "lodash": "^2.4.1",
+    "nom": "0.0.3",
+    "querystring": "^0.2.0",
+    "request": "^2.40.0"
   }
 }
