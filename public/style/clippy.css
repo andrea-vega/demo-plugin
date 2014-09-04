@@ -1,0 +1,54 @@
+.clippy {
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    z-index: 2000;
+}
+
+.bottom-right {
+    position: relative;
+    right: 0px;
+    bottom: 20px;
+    text-align: right;
+}
+
+.bubble {
+    z-index: 2001;
+    position: relative;
+    right: 150px;
+    bottom: -100px;
+    width: 250px;
+    height: 300px;
+    padding: 0px;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: #CCC solid 1px;
+}
+
+.bubble:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 0 15px 15px;
+    border-color: transparent #FFFFFF;
+    display: block;
+    width: 0;
+    z-index: 1;
+    right: -15px;
+    top: 237px;
+}
+
+.bubble:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 0 15px 15px;
+    border-color: transparent #CCC;
+    display: block;
+    width: 0;
+    z-index: 0;
+    right: -16px;
+    top: 237px;
+}

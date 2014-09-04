@@ -1,0 +1,60 @@
+<div class="animate ui dimmer page visible active">
+    <div ng-show="!saving" class="animate ui huge modal visible active" style="top: 10%">
+        <i class="entypo-cancel icon" ng-click="$hide()"></i>
+
+        <div class="header"><i class="fa-book icon"></i>New Photo Book
+        </div>
+        <div class="content">
+            <clippy-himself dance-frequency="10000" style="float:left"></clippy-himself>
+            <div style="float:right;width:80%">
+                <h1 class="ui header">Oh boy! Let's make a PHOTO BOOK!!</h1>
+
+                <form name="newBookForm" id="newBookForm" novalidate ng-submit="ctrl.validate() && ctrl.save()">
+                    <accordion fluid="true">
+                        <accordion-item title="What's it about?" ng-init="active=true">
+                            <h3 class="ui header"><i class="table icon"></i> Pick a value from the report, and I'll tell you all about it</h3>
+
+                            <div class="ui form">
+                                <semantic-dropdown title="Choose a column" type="fluid selection"
+                                                   ng-model="book.filter.group" required>
+                                    <dropdown-item ng-repeat="column in ctrl.dataset.fields" value="column.name">
+                                        {{ column.name | displayTitle }}
+                                    </dropdown-item>
+                                </semantic-dropdown>
+                                <semantic-textbox placeholder="Pick Any {{ book.filter.group | displayTitle }} Value"
+                                                  ng-model="book.filter.value"
+                                                  required></semantic-textbox>
+                            </div>
+                        </accordion-item>
+
+                        <accordion-item title="What's it called?">
+                            <h3 class="ui header"><i class="bookmark icon"></i> Name your book, and give the synopsis</h3>
+
+                            <div class="ui form">
+                                <semantic-textbox placeholder="My Fancy Book Title" ng-model="book.title" required></semantic-textbox>
+                                <semantic-textarea placeholder="My book is about {{ book.filter.group | displayTitle }}" ng-model="book.description" required></semantic-textarea>
+                            </div>
+                        </accordion-item>
+
+                        <accordion-item title="What are the pretty pictures like?">
+                            <h3 class="ui header"><i class="bookmark icon"></i> Name your book, and give the synopsis</h3>
+
+                            <div class="ui form">
+                                <semantic-textbox placeholder="My Fancy Book Title" ng-model="book.title" required></semantic-textbox>
+                                <semantic-textarea placeholder="My book is about {{ book.filter.group | displayTitle }}" ng-model="book.description" required></semantic-textarea>
+                            </div>
+                        </accordion-item>
+                    </accordion>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="actions">
+            <div class="ui positive button" ng-click="ctrl.finish()">
+                Make My Book!
+            </div>
+        </div>
+    </div>
+</div>

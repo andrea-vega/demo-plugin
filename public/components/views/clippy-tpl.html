@@ -1,0 +1,22 @@
+<div class="clippy animate nga-slideRight" ng-if="wassairClippy">
+    <div class="bubble">
+        <div class="ui basic segment">
+            <p>
+
+            <div class="ui icon header">
+                <i class="circular entypo-lamp icon"></i>Hi there, {{ session.user.name.givenName }}!
+                <div class="sub header"> It looks like you're trying to create a <b>photo book</b>. Would you like
+                    to run my handy book generator?
+                </div>
+            </div>
+            <br/><br/>
+
+            <div class="ui buttons">
+                <div class="ui positive button" ng-click="totally()">Totally!</div>
+                <div class="ui negative button" ng-click="goAway()">Go Away</div>
+            </div>
+            </p>
+        </div>
+    </div>
+    <clippy-himself class="bottom-right"></clippy-himself>
+</div>
