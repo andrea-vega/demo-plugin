@@ -14,10 +14,12 @@
                 <div class="meta">
                     <a class="group">By {{ book.author }}</a>
                 </div>
-                <div class="description">
-                    {{ book.description || 'A book about data' }}
-                </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- preload images -->
+<div style="display:none" ng-repeat="book in ctrl.books">
+    <img src="{{ image }}" ng-repeat="image in book.images"/>
 </div>
