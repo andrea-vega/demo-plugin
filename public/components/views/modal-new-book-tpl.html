@@ -12,7 +12,7 @@
                 <form name="newBookForm" id="newBookForm" novalidate ng-submit="ctrl.validate() && ctrl.save()">
                     <accordion fluid="true">
                         <accordion-item title="What's it about?" ng-init="active=true">
-                            <h3 class="ui header"><i class="table icon"></i> Pick a value from the report, and I'll tell you all about it</h3>
+                            <h3 class="ui green header"><i class="table icon"></i> Pick a value from the report, and I'll tell you all about it</h3>
 
                             <div class="ui form">
                                 <semantic-dropdown title="Choose a column" type="fluid selection"
@@ -28,7 +28,7 @@
                         </accordion-item>
 
                         <accordion-item title="What's it called?">
-                            <h3 class="ui header"><i class="bookmark icon"></i> Name your book, and give the synopsis</h3>
+                            <h3 class="ui green header"><i class="bookmark icon"></i> Name your book, and give the synopsis</h3>
 
                             <div class="ui form">
                                 <semantic-textbox placeholder="My Fancy Book Title" ng-model="book.title" required></semantic-textbox>
@@ -36,24 +36,30 @@
                             </div>
                         </accordion-item>
 
-                        <accordion-item title="What are the pretty pictures like?">
-                            <h3 class="ui header"><i class="bookmark icon"></i> Name your book, and give the synopsis</h3>
+                        <accordion-item title="What photos should go into your book?">
+                            <h3 class="ui green header"><i class="photo icon"></i> Provide some photo keywords and preferences</h3>
 
                             <div class="ui form">
-                                <semantic-textbox placeholder="My Fancy Book Title" ng-model="book.title" required></semantic-textbox>
-                                <semantic-textarea placeholder="My book is about {{ book.filter.group | displayTitle }}" ng-model="book.description" required></semantic-textarea>
+                                <semantic-dropdown title="Color or Black and White?" type="fluid selection"
+                                                   ng-model="book.blackAndWhite" required>
+                                    <dropdown-item value=false>Color</dropdown-item>
+                                    <dropdown-item value=true>Black and White</dropdown-item>
+                                </semantic-dropdown>
+                                <semantic-textbox placeholder="Enter search keywords" ng-model="book.imageQuery" required></semantic-textbox>
                             </div>
                         </accordion-item>
                     </accordion>
 
                 </form>
+                <div ng-show="error" class="ui error message"><i class="warning icon"></i> {{ error }}</div>
             </div>
+
 
         </div>
 
         <div class="actions">
-            <div class="ui positive button" ng-click="ctrl.finish()">
-                Make My Book!
+            <div ng-disabled="saving" ng-class="{'disabled': saving}" class="ui positive button" ng-click="ctrl.validate() && ctrl.save()">
+                {{ saving ? 'Creating the book...' : 'Make My Book!' }}
             </div>
         </div>
     </div>

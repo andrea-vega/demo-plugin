@@ -13,7 +13,7 @@ angular.module('informer')
                 scope.$on('$stateChangeSuccess', function (event, toState) {
                     if (toState && toState.name === 'reports.detail.results') {
                         $timeout(function () {
-//                            scope.wassairClippy = true;
+                            scope.wassairClippy = true;
                         }, 2000);
                     }
                 });
@@ -29,7 +29,6 @@ angular.module('informer')
                     scope.wassairClippy = false;
                 };
 
-                $timeout(scope.totally, 1000);
             }
         };
     })

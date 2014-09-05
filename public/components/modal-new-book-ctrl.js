@@ -2,11 +2,11 @@
 
 angular.module('informer')
 
-    .controller('NewBookCtrl', function ($scope, author, dataset, api, $timeout) {
+    .controller('NewBookCtrl', function ($scope, author, dataset, api, notify, modalViewBook) {
         var ctrl = this;
         $scope.book = {
             author: author,
-            datasetId: dataset,
+            datasetId: dataset.slug,
             filter: {}
         };
 
@@ -14,6 +14,7 @@ angular.module('informer')
 
         ctrl.validate = function () {
             $scope.saving = false;
+            $scope.error = false;
             angular.forEach($scope.newBookForm.$error, function (errorSet) {
                     angular.forEach(errorSet, function (node) {
                         node.$setViewValue(node.$modelValue);
@@ -22,7 +23,7 @@ angular.module('informer')
             );
             var valid = $scope.newBookForm.$valid;
             if (!valid) {
-                $scope.testFailed = 'Please complete all required fields.';
+                $scope.error = 'Please complete all required fields.';
             }
             return valid;
         };
@@ -31,12 +32,11 @@ angular.module('informer')
             $scope.saving = true;
             api.link('inf:books').post($scope.book).then(function (result) {
                 notify.success(result.title + ' was created.', 'Photo Book Created!');
-                console.log(result);
+                modalViewBook.open({ book: result });
                 $scope.$hide();
             }, function (err) {
                 $scope.saving = false;
-                $scope.testPassed = false;
-                $scope.testFailed = 'An error occurred: ' + (err.data ? err.data.message : err);
+                $scope.error = 'An error occurred: ' + (err.data ? err.data.message : err);
             });
         };
 

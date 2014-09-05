@@ -1,5 +1,37 @@
 <div class="animate ui dimmer page visible active">
     <div ng-show="!saving" class="animate ui huge modal visible active" style="top: 10%">
-       HERE I AM
+        <i class="entypo-cancel icon" ng-click="$hide()"></i>
+        <br/>
+
+        <div class="book-wrapper">
+            <div class="left navigator">
+                <i ng-class="{'disabled': ctrl.currentPage < 0}" class="left triangle icon"
+                   ng-click="ctrl.prevPage()"></i>
+            </div>
+            <div class="book">
+                <div class="book-cover" ng-show="!page" style="background-image: url('{{ book.images[0] }}')">
+                    <h1 class="ui huge inverted outlined header">{{ book.title }}</h1>
+
+                    <h3 class="ui tiny inverted outlined header">By {{ book.author }}</h3>
+                </div>
+                <div class="book-page" ng-show="page" style="background-image: url('{{ page.image }}')">
+                    <h1 class="ui huge inverted outlined header">{{ page.title }}</h1>
+
+                    <div class="ui list">
+                        <div class="item" ng-repeat="item in page.items | limitTo: 15">
+                            <div class="page-item">{{ item.key }}</div>
+
+                            <div class="ui black circular label">{{ item.doc_count }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right navigator">
+                <i ng-class="{'disabled': ctrl.currentPage >= book.pages.length }" class="right triangle icon"
+                   ng-click="ctrl.nextPage()"></i>
+            </div>
+        </div>
+        <br/>
+
     </div>
 </div>

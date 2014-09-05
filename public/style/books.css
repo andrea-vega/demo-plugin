@@ -1,5 +1,69 @@
-.book-cover img {
-    max-height: 200px;
+.book-cover-item img {
+    max-height: 240px;
+    min-height: 240px;
     overflow: hidden;
     cursor: pointer;
+}
+
+.book-wrapper {
+    display: table;
+    margin: auto;
+}
+
+.book {
+    width: 800px;
+    height: 100%;
+    display: table-cell;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    background-color: #CCC;
+}
+
+.book-cover, .book-page {
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    padding: 50px;
+}
+
+.book-cover {
+    text-align: center;
+    font-size: 200%;
+}
+
+.book-page {
+}
+
+.outlined.header {
+    text-shadow: 1px 1px 1px #444;
+}
+
+.navigator {
+    display: table-cell;
+}
+
+.navigator .icon {
+    font-size: 60px !important;
+    cursor: pointer;
+}
+
+.navigator .icon.disabled {
+    cursor: default;
+}
+
+.left.navigator {
+    float: left;
+}
+
+.right.navigator {
+    float: right;
+}
+
+.page-item {
+    font-weight: bold;
+    display: inline;
+    margin-right: 5px;
+    color: #FFF !important;
+    text-shadow: 1px 1px 1px #444;
 }

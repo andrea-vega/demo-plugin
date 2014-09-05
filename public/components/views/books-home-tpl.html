@@ -3,18 +3,20 @@
     </title-section>
 </ent-header>
 
-<div class="ui cards">
-    <div class="card book-cover" ng-click="ctrl.viewBook(book)" ng-repeat="book in ctrl.books">
-        <div class="image">
-            <img src="{{ book.images[0] }}">
-        </div>
-        <div class="content">
-            <div class="header">{{ book.title }}</div>
-            <div class="meta">
-                <a class="group">By {{ book.author }}</a>
+<div class="content" style="padding:20px">
+    <div class="ui cards">
+        <div class="card book-cover-item" ng-click="ctrl.viewBook(book)" ng-repeat="book in ctrl.books">
+            <div class="image">
+                <img src="{{ book.images[0] }}">
             </div>
-            <div class="description">
-                {{ book.description }}
+            <div class="content">
+                <div class="header">{{ book.title }}</div>
+                <div class="meta">
+                    <a class="group">By {{ book.author }}</a>
+                </div>
+                <div class="description">
+                    {{ book.description || 'A book about data' }}
+                </div>
             </div>
         </div>
     </div>
